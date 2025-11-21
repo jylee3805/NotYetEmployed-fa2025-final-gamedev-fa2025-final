@@ -5,17 +5,21 @@ public class GhostMovement : MonoBehaviour
 {
     public Transform player;
     public float speed = 3f;
+    public GameManager gmScript;
     private SpriteRenderer spriteRenderer;
     public float health = 50f;
     private bool suction = false;
     private bool cd = false;
     private Rigidbody2D rb;
+    
+    private Animator anim;
 
      void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = 50f;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     public void TakeDamage(int amt)
@@ -23,6 +27,7 @@ public class GhostMovement : MonoBehaviour
         health -= amt;
         if(health <= 0){
             Destroy(gameObject);
+            gmScript.ghostDeath();
         }
     }
 
@@ -54,8 +59,8 @@ public class GhostMovement : MonoBehaviour
 
     public void stopMovement(bool tf)
     {
+        anim.SetBool("isSucked",tf);
         suction = tf;
-
         if (suction)
         {
            rb.linearVelocity = Vector2.zero;
