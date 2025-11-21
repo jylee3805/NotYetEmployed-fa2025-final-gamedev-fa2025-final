@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         health -= dmg;
         if (health<=0){
-            Debug.Log("Dead");
+            SceneManager.LoadScene("GameOver");
         }
 
     }

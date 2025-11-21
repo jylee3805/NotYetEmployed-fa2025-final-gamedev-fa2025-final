@@ -49,9 +49,16 @@ public class GhostMovement : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!cd){
-                 other.GetComponent<PlayerMovement>()?.TakeDamage(5);
-                 StartCoroutine(attackCD());
+           if (!cd)
+            {
+       
+                PlayerMovement pm = other.transform.parent.GetComponent<PlayerMovement>();
+
+                if (pm != null)
+                {
+                    pm.TakeDamage(5);
+                    StartCoroutine(attackCD());
+                }
             }
             
         }
