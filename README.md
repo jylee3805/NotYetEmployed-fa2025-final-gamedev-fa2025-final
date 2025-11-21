@@ -11,8 +11,8 @@
 
 ## Important Links
 
-- Game URL: < ... >
-- GITHUB URL: < ... >
+- Game URL: < https://play.unity.com/en/games/0ca9b748-40fe-4e6f-8619-dea7f82830fd/build >
+- GITHUB URL: < https://github.com/jylee3805/NotYetEmployed-fa2025-final-gamedev-fa2025-fina >
 - Gameplay Video URL: < https://youtu.be/KMdW3ZXYl9I?si=5V9I79lzSpiX8KZ0 >
 - Google Doc writeup: < ... >
 
