@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public Transform mainPlayer;
@@ -19,16 +20,34 @@ public class GameManager : MonoBehaviour
         {
             SpawnPoints.Add(child.gameObject);
         }
+        StartCoroutine(newRound());
+    }
 
+    private IEnumerator newRound()
+    {
+        yield return new WaitForSeconds(3f);
+        numGhosts = baseGhosts*level;
         for(int i =0; i<baseGhosts*level; i++){
             int randomNumber = Random.Range(0,SpawnPoints.Count);
             GameObject ghost = Instantiate(ghostAsset, SpawnPoints[randomNumber].transform.position, Quaternion.identity);
-            ghost.GetComponent<GhostMovement>().player = mainPlayer;
-            Debug.Log(i);
+            GhostMovement gm = ghost.GetComponent<GhostMovement>();
+            gm.player = mainPlayer;
+            gm.gmScript = this;
+            yield return new WaitForSeconds(.35f);
         }
 
+    }   
 
+    public void ghostDeath()
+    {
+        numGhosts-=1;
+        if (numGhosts == 0)
+        {
+            level+=1;
+            StartCoroutine(newRound());
+        }
     }
+
 
 
 

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class TriggerCollide : MonoBehaviour
 {
+    public Sprite normalSprite;
+    public Sprite suckedSprite;
+
    void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Ghost"))
@@ -11,7 +14,8 @@ public class TriggerCollide : MonoBehaviour
             {
                 ghostControl.stopMovement(true);
                 ghostControl.TakeDamage(1);
-            
+                //SpriteRenderer spriteRenderer = other.GetComponentInChildren<SpriteRenderer>();
+                //spriteRenderer.sprite = suckedSprite;
             }
         }
     }   
@@ -21,6 +25,8 @@ public class TriggerCollide : MonoBehaviour
         if (other.CompareTag("Ghost"))
         {
             other.GetComponent<GhostMovement>()?.stopMovement(false);
+           // SpriteRenderer spriteRenderer = other.GetComponentInChildren<SpriteRenderer>();
+           // spriteRenderer.sprite = normalSprite;
         }
     }
 
