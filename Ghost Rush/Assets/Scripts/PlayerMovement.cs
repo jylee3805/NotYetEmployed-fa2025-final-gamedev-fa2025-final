@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 input;
     private Transform character;
     private SpriteRenderer spriteRenderer;
+    public float health = 100f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,6 +33,15 @@ public class PlayerMovement : MonoBehaviour
             if (!spriteRenderer.flipX)
                 spriteRenderer.flipX = !spriteRenderer.flipX;
         }
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
+        if (health<=0){
+            Debug.Log("Dead");
+        }
+
     }
 
     void FixedUpdate()
