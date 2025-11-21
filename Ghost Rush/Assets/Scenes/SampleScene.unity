@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!60 &131144012
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -440,7 +441,7 @@ GameObject:
   - component: {fileID: 152282661}
   - component: {fileID: 152282662}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -756,6 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &217293397
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1066,6 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &295133595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1603,6 +1606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &532101360
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1997,6 +2001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &715490164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2307,6 +2312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &739104967
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2617,6 +2623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &837952964
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2927,6 +2934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &855403942
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3237,6 +3245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &944968121
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3336,7 +3345,7 @@ Transform:
   m_GameObject: {fileID: 1211196982}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8179,6 +8188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &1394493642
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8263,7 +8273,7 @@ GameObject:
   - component: {fileID: 1528135507}
   - component: {fileID: 1528135508}
   m_Layer: 0
-  m_Name: Isometric Diamond
+  m_Name: vacuumModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8984,6 +8994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostMovement
   player: {fileID: 523351881}
   speed: 3
+  health: 10
 --- !u!212 &1990327409
 SpriteRenderer:
   m_ObjectHideFlags: 0
