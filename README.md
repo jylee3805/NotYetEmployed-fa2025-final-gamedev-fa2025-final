@@ -13,7 +13,7 @@
 
 - Game URL: < ... >
 - GITHUB URL: < ... >
-- Gameplay Video URL: < https://youtu.be/fCKdjxXMTtM?si=JAOKuZXMB0LB14zv >
+- Gameplay Video URL: < https://youtu.be/KMdW3ZXYl9I?si=5V9I79lzSpiX8KZ0 >
 - Google Doc writeup: < ... >
 
 ## Files in the repository
