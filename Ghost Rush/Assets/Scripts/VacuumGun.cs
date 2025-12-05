@@ -5,6 +5,8 @@ public class VacuumGun : MonoBehaviour
     [Header("Assign the hitbox object here")]
     public GameObject hitbox;
 
+    public int level = 1;
+
     public Vector3 BaseScale = new Vector3(1.5f, 1.7f, 0.7f);
 
     [Header("Base Stats")]
@@ -19,8 +21,8 @@ public class VacuumGun : MonoBehaviour
     public float rangeGrowth = 0.05f;
     public float wideGrowth = 0.05f;
 
-    public float Range => baseRange * Mathf.Pow(1f + rangeGrowth, currentRange - 1);
-    public float Wideness => baseWide * Mathf.Pow(1f + wideGrowth, currentWide - 1);
+    public float Range => baseRange * Mathf.Pow(1f + rangeGrowth, level - 1);
+    public float Wideness => baseWide * Mathf.Pow(1f + wideGrowth, level - 1);
 
     void Update()
     {
@@ -39,6 +41,7 @@ public class VacuumGun : MonoBehaviour
     public void LevelUp(int globalLevel)
     {
         //Trigger Popup Change then update hitbox
+        level = globalLevel;
         UpdateHitbox();
     }
 
