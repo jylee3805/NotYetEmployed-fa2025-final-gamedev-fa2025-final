@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform character;
     private SpriteRenderer spriteRenderer;
     public float health = 100f;
+    public float maxHealth = 100f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

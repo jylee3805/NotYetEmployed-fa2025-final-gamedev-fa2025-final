@@ -4,10 +4,14 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public Transform mainPlayer;
+
+    public Animator transition;
     public int numGhosts;
     public bool floorCleared = false;
     public Transform spawnF;
+
     private List<GameObject> SpawnPoints = new List<GameObject>();
+
     private int level = 1;
     public int baseGhosts = 5;
     public GameObject ghostAsset;
@@ -28,7 +32,7 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator newRound()
-    {
+    {   
         yield return new WaitForSeconds(3f);
         numGhosts = baseGhosts*level;
         for(int i =0; i<baseGhosts*level; i++){
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (numGhosts == 0)
         {
             level+=1;
+            transition.SetTrigger("Start");
             StartCoroutine(newRound());
         }
     }
