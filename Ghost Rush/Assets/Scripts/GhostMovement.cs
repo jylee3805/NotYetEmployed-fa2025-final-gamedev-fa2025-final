@@ -11,21 +11,33 @@ public class GhostMovement : MonoBehaviour
     private bool suction = false;
     private bool cd = false;
     private Rigidbody2D rb;
-    
+    private Transform barFill;
+    private float maxHealth;
+
     private Animator anim;
 
      void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = 50f;
+        maxHealth = health;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        barFill = transform.Find("GhostUI/Background/Fill");
+
     }
 
     public void TakeDamage(int amt)
     {
         health -= amt;
-        if(health <= 0){
+        //Update Health Bar
+        if (barFill != null)
+        {
+            float ratio = Mathf.Clamp01(health / maxHealth);
+            barFill.localScale = new Vector3(ratio, 1f, 1f);
+        }
+            if (health <= 0){
             Destroy(gameObject);
             Leveling.Instance.addSouls(1);
             gmScript.ghostDeath();
