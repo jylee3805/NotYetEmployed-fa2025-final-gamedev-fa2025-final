@@ -3,13 +3,17 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-
+    
     private Rigidbody2D rb;
     private Vector2 input;
     private Transform character;
     private SpriteRenderer spriteRenderer;
+    public float baseHealth = 100f;
     public float health = 100f;
     public float maxHealth = 100f;
+
+    public float healthLevelupIncrease = 20f;
+    public float moveSpeedLevelupIncrease = 0.5f;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,4 +53,16 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = input * moveSpeed;
     }
+
+    public void LevelUpHealth()
+    {
+        maxHealth += healthLevelupIncrease;
+        health = maxHealth;
+    }
+    
+    public void LevelUpMoveSpeed()
+    {
+        moveSpeed += moveSpeedLevelupIncrease;
+    }
+
 }

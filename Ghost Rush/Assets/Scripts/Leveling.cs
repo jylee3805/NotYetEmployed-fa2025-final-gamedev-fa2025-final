@@ -3,6 +3,11 @@ using UnityEngine;
 public class Leveling : MonoBehaviour
 {
     public VacuumGun vacuumGun;
+    public PlayerMovement playerMovement;
+
+    public int HealthLevel { get; set; } = 1;
+    public int SpeedLevel { get; set; } = 1;
+
     public int Souls { get; private set; }
     public static Leveling Instance { get; private set; }
 
@@ -27,5 +32,41 @@ public class Leveling : MonoBehaviour
     {
         this.Souls += souls;
     }
+
+    public void UpgradeHealth()
+    {
+        if (HealthLevel >= 5)
+        {
+            return;
+        }
+        int soulsNeeded = HealthLevel * 2;
+        if(Souls < soulsNeeded)
+        {
+            return;
+        }
+        Souls -= soulsNeeded;
+        playerMovement.LevelUpHealth();
+        HealthLevel += 1;
+    }
+
+    public void UpgradeSpeed()
+    {
+        if(SpeedLevel >= 5)
+        {
+            return;
+        }
+        int soulsNeeded = SpeedLevel * 2; 
+        if(Souls < soulsNeeded)
+        {
+            return;
+        }
+        Souls -= soulsNeeded;
+        playerMovement.LevelUpMoveSpeed();
+        SpeedLevel += 1;
+    }
+
+
+
+
 
   }
