@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Leveling : MonoBehaviour
 {
-    public int level = 1;
-    public float currentXp = 0f;
-    public float xpToNextLevel = 100f;
     public VacuumGun vacuumGun;
+    public int Souls { get; private set; }
+    public static Leveling Instance { get; private set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+       if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -19,21 +23,9 @@ public class Leveling : MonoBehaviour
         
     }
 
-    public void AddXp(float amount)
+    public void addSouls(int souls)
     {
-        currentXp += amount;
-
-        if (currentXp >= xpToNextLevel)
-        {
-            currentXp -= xpToNextLevel;
-            xpToNextLevel *= 1.15f;
-            LevelUp();
-        }
+        this.Souls += souls;
     }
 
-    void LevelUp()
-    {
-        level++;
-        vacuumGun.LevelUp(level);
-    }
-}
+  }

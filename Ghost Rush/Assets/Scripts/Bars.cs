@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Bars : MonoBehaviour
@@ -12,6 +13,8 @@ public class Bars : MonoBehaviour
     public VacuumGun vgScript;
     private float healthScale;
     private float chargeScale;
+
+    public TextMeshProUGUI soulsText;
     void Start()
     {
         healthScale = healthFill.localScale.x;
@@ -23,6 +26,8 @@ public class Bars : MonoBehaviour
     {
         float healthPct = pmScript.health / pmScript.maxHealth;
         float chargePct = vgScript.currentCharge / vgScript.maxCharge;
+
+        soulsText.text = Leveling.Instance.Souls.ToString() + " Souls";
 
         healthFill.localScale = new Vector3(
             healthScale * healthPct,

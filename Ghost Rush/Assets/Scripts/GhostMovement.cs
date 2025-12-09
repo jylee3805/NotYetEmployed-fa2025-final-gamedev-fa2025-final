@@ -27,6 +27,7 @@ public class GhostMovement : MonoBehaviour
         health -= amt;
         if(health <= 0){
             Destroy(gameObject);
+            Leveling.Instance.addSouls(1);
             gmScript.ghostDeath();
         }
     }
