@@ -43,14 +43,14 @@ public class GameManager : MonoBehaviour
         int numPoints = baseGhosts + (3*level);
         if (level > 3)
         {
-            int max = (level-3) * 2;
+            int max = (int)((level-3) * 1.5);
             int current = 0;
             while (true)
             {
                 if (current == max) break;
-                if (numPoints > 5)
+                if (numPoints > 2)
                 {
-                    numPoints -= 5;
+                    numPoints -= 2;
                     current++;
                     numGhosts++;
                     int randomNumber = Random.Range(0,SpawnPoints[pSpawn].Count);
@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
                     GhostMovement gm = ghost.GetComponent<GhostMovement>();
                     gm.player = mainPlayer;
                     gm.gmScript = this;
+                    gm.maxHealth = 200f;
+                    gm.health = 200f;
+                    gm.speed = 1.5f;
                     yield return new WaitForSeconds(.35f);
                 }else
                 {
@@ -65,6 +68,16 @@ public class GameManager : MonoBehaviour
                 }
             }
         
+        }
+        int healthLVL = level / 3;
+        float health = 20f;
+        if (healthLVL > 3)
+        {
+            health = 80f;
+        }
+        else
+        {
+            health += 20*healthLVL;
         }
         
         
@@ -75,6 +88,8 @@ public class GameManager : MonoBehaviour
             GhostMovement gm = ghost.GetComponent<GhostMovement>();
             gm.player = mainPlayer;
             gm.gmScript = this;
+            gm.maxHealth = health;
+            gm.health = health;
             yield return new WaitForSeconds(.35f);
         }
 

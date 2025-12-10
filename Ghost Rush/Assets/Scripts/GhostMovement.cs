@@ -12,15 +12,15 @@ public class GhostMovement : MonoBehaviour
     private bool cd = false;
     private Rigidbody2D rb;
     private Transform barFill;
-    private float maxHealth;
+    public float maxHealth = 50f;
 
     private Animator anim;
 
      void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        health = 50f;
-        maxHealth = health;
+       // health = 50f;
+       // maxHealth = health;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -54,7 +54,7 @@ public class GhostMovement : MonoBehaviour
          else
             spriteRenderer.flipX = true;  // moving right
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * 3;
+        rb.linearVelocity = direction * speed;
       
     }
 
