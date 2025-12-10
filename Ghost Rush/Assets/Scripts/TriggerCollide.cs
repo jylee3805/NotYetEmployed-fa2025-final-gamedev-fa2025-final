@@ -13,7 +13,7 @@ public class TriggerCollide : MonoBehaviour
             if (ghostControl != null)
             {
                 ghostControl.stopMovement(true);
-                ghostControl.TakeDamage(1);
+                ghostControl.TakeDamage(VacuumGun.Instance.Damage);
                 //SpriteRenderer spriteRenderer = other.GetComponentInChildren<SpriteRenderer>();
                 //spriteRenderer.sprite = suckedSprite;
             }

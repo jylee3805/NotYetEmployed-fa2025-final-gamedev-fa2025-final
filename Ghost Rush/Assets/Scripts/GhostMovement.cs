@@ -28,7 +28,7 @@ public class GhostMovement : MonoBehaviour
 
     }
 
-    public void TakeDamage(int amt)
+    public void TakeDamage(float amt)
     {
         health -= amt;
         //Update Health Bar

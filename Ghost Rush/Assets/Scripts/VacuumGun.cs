@@ -34,6 +34,19 @@ public class VacuumGun : MonoBehaviour
     private float timeSinceLastInput = 0f;
     private bool isHolding = false;
 
+    public float Damage { get; set; } = 1;
+
+    public static VacuumGun Instance { get; private set; }
+
+    private void Awake()
+    {
+       if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+       Instance = this;
+    }
     void Update()
     {
         if (Input.GetMouseButton(0) && currentCharge > 0)
@@ -92,5 +105,10 @@ public class VacuumGun : MonoBehaviour
            hitbox.transform.localPosition.y,
            (BaseScale.z * 0.5f) * Range
        );
+    }
+
+    public void LevelUpDamage()
+    {
+        Damage += 0.25f;
     }
 }

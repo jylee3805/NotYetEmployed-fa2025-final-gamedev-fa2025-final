@@ -8,6 +8,8 @@ public class Leveling : MonoBehaviour
     public int HealthLevel { get; set; } = 1;
     public int SpeedLevel { get; set; } = 1;
 
+    public int DamageLevel { get; set; } = 1;
+
     public int Souls { get; private set; }
     public static Leveling Instance { get; private set; }
 
@@ -63,6 +65,22 @@ public class Leveling : MonoBehaviour
         Souls -= soulsNeeded;
         playerMovement.LevelUpMoveSpeed();
         SpeedLevel += 1;
+    }
+
+    public void UpgradeDamage()
+    {
+        if(DamageLevel >= 5){
+            return;
+        }
+        int soulsNeeded = DamageLevel * 2;
+        if(Souls < soulsNeeded)
+        {
+            return;
+        }
+        Souls -= soulsNeeded;
+        vacuumGun.LevelUpDamage();
+        DamageLevel += 1;
+        
     }
 
 
