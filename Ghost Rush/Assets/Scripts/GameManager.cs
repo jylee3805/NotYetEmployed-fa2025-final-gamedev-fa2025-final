@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public bool floorCleared = false;
     public Transform spawnF;
 
-    private List<GameObject> SpawnPoints = new List<GameObject>();
+    private List<List<GameObject>> SpawnPoints = new List<List<GameObject>>();
 
     private int level = 1;
     public int baseGhosts = 5;
@@ -26,18 +26,23 @@ public class GameManager : MonoBehaviour
     {
         foreach (Transform child in spawnF)
         {
-            SpawnPoints.Add(child.gameObject);
+            List<GameObject> current = new List<GameObject>();
+            foreach (Transform c in child)
+            {
+                current.Add(c.gameObject);
+            }
+            SpawnPoints.Add(current);
         }
-        StartCoroutine(newRound());
+        StartCoroutine(newRound(0));
     }
 
-    private IEnumerator newRound()
+    public IEnumerator newRound(int pSpawn)
     {   
         yield return new WaitForSeconds(3f);
         numGhosts = baseGhosts*level;
         for(int i =0; i<baseGhosts*level; i++){
-            int randomNumber = Random.Range(0,SpawnPoints.Count);
-            GameObject ghost = Instantiate(ghostAsset, SpawnPoints[randomNumber].transform.position, Quaternion.identity);
+            int randomNumber = Random.Range(0,SpawnPoints[pSpawn].Count);
+            GameObject ghost = Instantiate(ghostAsset, SpawnPoints[pSpawn][randomNumber].transform.position, Quaternion.identity);
             GhostMovement gm = ghost.GetComponent<GhostMovement>();
             gm.player = mainPlayer;
             gm.gmScript = this;
@@ -53,7 +58,7 @@ public class GameManager : MonoBehaviour
         {
             level+=1;
             transition.SetTrigger("Start");
-            StartCoroutine(newRound());
+            //StartCoroutine(newRound());
         }
     }
 

@@ -6,6 +6,7 @@ public class ChangeLoc : MonoBehaviour
 {
     private List<GameObject> playerPoints = new List<GameObject>();
     public Transform spawnP;
+    public GameManager gmScript;
     public Transform mainPlayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -20,5 +21,6 @@ public class ChangeLoc : MonoBehaviour
     {
         int randomMap = Random.Range(0,4);
         mainPlayer.position = playerPoints[randomMap].transform.position;  
+        StartCoroutine(gmScript.newRound(randomMap));
     }
 }
