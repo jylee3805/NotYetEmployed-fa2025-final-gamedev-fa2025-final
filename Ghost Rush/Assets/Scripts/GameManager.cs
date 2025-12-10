@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
 
     private List<List<GameObject>> SpawnPoints = new List<List<GameObject>>();
 
-    private int level = 1;
+    private int level = 0;
     public int baseGhosts = 5;
     public GameObject ghostAsset;
+    public GameObject ghostAsset2;
 
 
     
@@ -39,8 +40,36 @@ public class GameManager : MonoBehaviour
     public IEnumerator newRound(int pSpawn)
     {   
         yield return new WaitForSeconds(3f);
-        numGhosts = baseGhosts*level;
-        for(int i =0; i<baseGhosts*level; i++){
+        int numPoints = baseGhosts + (3*level);
+        if (level > 3)
+        {
+            int max = (level-3) * 2;
+            int current = 0;
+            while (true)
+            {
+                if (current == max) break;
+                if (numPoints > 5)
+                {
+                    numPoints -= 5;
+                    current++;
+                    numGhosts++;
+                    int randomNumber = Random.Range(0,SpawnPoints[pSpawn].Count);
+                    GameObject ghost = Instantiate(ghostAsset2, SpawnPoints[pSpawn][randomNumber].transform.position, Quaternion.identity);
+                    GhostMovement gm = ghost.GetComponent<GhostMovement>();
+                    gm.player = mainPlayer;
+                    gm.gmScript = this;
+                    yield return new WaitForSeconds(.35f);
+                }else
+                {
+                    break;
+                }
+            }
+        
+        }
+        
+        
+        for(int i =0; i<numPoints; i++){
+            numGhosts++;
             int randomNumber = Random.Range(0,SpawnPoints[pSpawn].Count);
             GameObject ghost = Instantiate(ghostAsset, SpawnPoints[pSpawn][randomNumber].transform.position, Quaternion.identity);
             GhostMovement gm = ghost.GetComponent<GhostMovement>();
