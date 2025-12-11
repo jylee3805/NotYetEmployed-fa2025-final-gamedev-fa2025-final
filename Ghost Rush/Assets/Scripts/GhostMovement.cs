@@ -5,6 +5,7 @@ public class GhostMovement : MonoBehaviour
 {
     public Transform player;
     public float speed = 3f;
+    public float dmg = 5f;
     public GameManager gmScript;
     private SpriteRenderer spriteRenderer;
     public float health = 50f;
@@ -13,6 +14,7 @@ public class GhostMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Transform barFill;
     public float maxHealth = 50f;
+
 
     private Animator anim;
 
@@ -69,7 +71,7 @@ public class GhostMovement : MonoBehaviour
 
                 if (pm != null)
                 {
-                    pm.TakeDamage(5);
+                    pm.TakeDamage(dmg);
                     StartCoroutine(attackCD());
                 }
             }
