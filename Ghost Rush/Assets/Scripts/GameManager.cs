@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
                     gm.maxHealth = 200f;
                     gm.health = 200f;
                     gm.speed = 1.5f;
+                    gm.dmg = 20f;
                     yield return new WaitForSeconds(.35f);
                 }else
                 {
@@ -70,14 +71,17 @@ public class GameManager : MonoBehaviour
         
         }
         int healthLVL = level / 3;
+        float dmg = 4f;
         float health = 20f;
         if (healthLVL > 3)
         {
             health = 80f;
+            dmg = 10f;
         }
         else
         {
             health += 20*healthLVL;
+            dmg += 2 * healthLVL;
         }
         
         
@@ -90,6 +94,7 @@ public class GameManager : MonoBehaviour
             gm.gmScript = this;
             gm.maxHealth = health;
             gm.health = health;
+            gm.dmg = dmg;
             yield return new WaitForSeconds(.35f);
         }
 

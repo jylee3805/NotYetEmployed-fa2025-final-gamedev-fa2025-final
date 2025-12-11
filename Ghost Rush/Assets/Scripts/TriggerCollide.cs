@@ -5,17 +5,29 @@ public class TriggerCollide : MonoBehaviour
     public Sprite normalSprite;
     public Sprite suckedSprite;
 
+    public Transform pos;
+
    void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Ghost"))
         {
-            GhostMovement ghostControl = other.GetComponent<GhostMovement>();
-            if (ghostControl != null)
+            Vector2 playerPos = transform.position;
+            Vector2 ghostPos = other.transform.position;
+
+            RaycastHit2D hit = Physics2D.Linecast(pos.position, ghostPos, LayerMask.GetMask("IgnoreGhosts"));
+
+            if (hit.collider == null) 
             {
-                ghostControl.stopMovement(true);
-                ghostControl.TakeDamage(VacuumGun.Instance.Damage);
-                //SpriteRenderer spriteRenderer = other.GetComponentInChildren<SpriteRenderer>();
-                //spriteRenderer.sprite = suckedSprite;
+                GhostMovement ghostControl = other.GetComponent<GhostMovement>();
+                if (ghostControl != null)
+                {
+                    ghostControl.stopMovement(true);
+                    ghostControl.TakeDamage(VacuumGun.Instance.Damage);
+                }
+            }
+            else
+            {
+                
             }
         }
     }   
