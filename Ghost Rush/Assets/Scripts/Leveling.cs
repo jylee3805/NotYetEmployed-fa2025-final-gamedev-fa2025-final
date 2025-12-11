@@ -9,6 +9,7 @@ public class Leveling : MonoBehaviour
     public int SpeedLevel { get; set; } = 1;
 
     public int DamageLevel { get; set; } = 1;
+    public int VaccumScaleLevel { get; set; } = 1;
 
     public int Souls { get; private set; }
     public static Leveling Instance { get; private set; }
@@ -81,6 +82,23 @@ public class Leveling : MonoBehaviour
         vacuumGun.LevelUpDamage();
         DamageLevel += 1;
         
+    }
+
+    public void UpgradeVaccumScale()
+    {
+        if (VaccumScaleLevel >= 5)
+        {
+            return;
+        }
+        int soulsNeeded = VaccumScaleLevel * 2;
+        if (Souls < soulsNeeded)
+        {
+            return;
+        }
+        Souls -= soulsNeeded;
+        vacuumGun.LevelUpScale(VaccumScaleLevel);
+        VaccumScaleLevel += 1;
+
     }
 
 

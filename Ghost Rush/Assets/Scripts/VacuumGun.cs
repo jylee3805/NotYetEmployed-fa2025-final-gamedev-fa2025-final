@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using NUnit.Framework;
+using System.Collections.Generic;
 public class VacuumGun : MonoBehaviour
 {
     [Header("Assign the hitbox object here")]
@@ -36,6 +38,9 @@ public class VacuumGun : MonoBehaviour
 
     public float Damage { get; set; } = 1;
 
+    //First val is x, second val is y, third value is the val to move the x to (pos), 4th val is val to move y to (pos)
+
+    public List<Vector4> ScaleValues;
     public static VacuumGun Instance { get; private set; }
 
     private void Awake()
@@ -105,6 +110,17 @@ public class VacuumGun : MonoBehaviour
            hitbox.transform.localPosition.y,
            (BaseScale.z * 0.5f) * Range
        );
+    }
+
+
+    public void LevelUpScale(int level)
+    {
+        Vector4 vector = ScaleValues[level - 1];
+        hitbox.transform.localScale = new Vector2(vector.x, vector.y);
+        hitbox.transform.localPosition = new Vector2(
+            vector.z,
+            vector.w
+        );
     }
 
     public void LevelUpDamage()

@@ -11,15 +11,18 @@ public class PauseManager : MonoBehaviour
     public TextMeshProUGUI speedText;
     public TextMeshProUGUI soulsText;
     public TextMeshProUGUI damageText;
+    public TextMeshProUGUI scaleText;
     public Button healthButton;
     public Button speedButton;
     public Button damageButton;
+    public Button scaleButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         healthButton.onClick.AddListener(Leveling.Instance.UpgradeHealth);
         speedButton.onClick.AddListener (Leveling.Instance.UpgradeSpeed);
         damageButton.onClick.AddListener(Leveling.Instance.UpgradeDamage);
+        scaleButton.onClick.AddListener(Leveling.Instance.UpgradeVaccumScale);
     }
 
     // Update is called once per frame
@@ -30,6 +33,8 @@ public class PauseManager : MonoBehaviour
         healthText.text = "Health Level: " + Leveling.Instance.HealthLevel + "\nSoul Cost: " + (10 + Leveling.Instance.HealthLevel * 2);
         speedText.text = "Speed Level: " + Leveling.Instance.SpeedLevel + "\nSoul Cost: " + (10 + Leveling.Instance.SpeedLevel * 2);
         damageText.text = "Damage Level: " + Leveling.Instance.DamageLevel + "\nSoul Cost: " + (10 + Leveling.Instance.DamageLevel * 2);
+        scaleText.text = "Scale Level: " + Leveling.Instance.VaccumScaleLevel + "\nSoul Cost: " + (Leveling.Instance.VaccumScaleLevel * 2);
+
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
