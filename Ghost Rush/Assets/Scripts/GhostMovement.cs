@@ -72,6 +72,7 @@ public class GhostMovement : MonoBehaviour
                 if (pm != null)
                 {
                     pm.TakeDamage(dmg);
+                    anim.SetTrigger("attack");
                     StartCoroutine(attackCD());
                 }
             }
