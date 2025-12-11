@@ -27,9 +27,9 @@ public class PauseManager : MonoBehaviour
     {
 
         soulsText.text = "Souls: " + Leveling.Instance.Souls;
-        healthText.text = "Health Level: " + Leveling.Instance.HealthLevel + "\nSoul Cost: " + Leveling.Instance.HealthLevel * 2;
-        speedText.text = "Speed Level: " + Leveling.Instance.SpeedLevel + "\nSoul Cost: " + Leveling.Instance.SpeedLevel * 2;
-        damageText.text = "Damage Level: " + Leveling.Instance.DamageLevel + "\nSoul Cost: " + Leveling.Instance.DamageLevel * 2;
+        healthText.text = "Health Level: " + Leveling.Instance.HealthLevel + "\nSoul Cost: " + (10 + Leveling.Instance.HealthLevel * 2);
+        speedText.text = "Speed Level: " + Leveling.Instance.SpeedLevel + "\nSoul Cost: " + (10 + Leveling.Instance.SpeedLevel * 2);
+        damageText.text = "Damage Level: " + Leveling.Instance.DamageLevel + "\nSoul Cost: " + (10 + Leveling.Instance.DamageLevel * 2);
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

@@ -41,7 +41,7 @@ public class Leveling : MonoBehaviour
         {
             return;
         }
-        int soulsNeeded = HealthLevel * 2;
+        int soulsNeeded = 10 + HealthLevel * 2;
         if(Souls < soulsNeeded)
         {
             return;
@@ -57,7 +57,7 @@ public class Leveling : MonoBehaviour
         {
             return;
         }
-        int soulsNeeded = SpeedLevel * 2; 
+        int soulsNeeded = 10 + SpeedLevel * 2; 
         if(Souls < soulsNeeded)
         {
             return;
@@ -72,7 +72,7 @@ public class Leveling : MonoBehaviour
         if(DamageLevel >= 5){
             return;
         }
-        int soulsNeeded = DamageLevel * 2;
+        int soulsNeeded = 10 + DamageLevel * 2;
         if(Souls < soulsNeeded)
         {
             return;
