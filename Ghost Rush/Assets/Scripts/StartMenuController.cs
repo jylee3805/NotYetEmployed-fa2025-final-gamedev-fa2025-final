@@ -8,6 +8,11 @@ public class StartMenuController : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void LoadTitle()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
     public void LoadInstructions()
     {
         SceneManager.LoadScene("Instructions");
