@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Leveling : MonoBehaviour
@@ -13,6 +15,8 @@ public class Leveling : MonoBehaviour
 
     public int Souls { get; private set; }
     public static Leveling Instance { get; private set; }
+
+    public List<Vacuum> unlockedVacuums { get; set; } = new List<Vacuum>() { Vacuum.Default };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -99,6 +103,28 @@ public class Leveling : MonoBehaviour
         vacuumGun.LevelUpScale(VaccumScaleLevel);
         VaccumScaleLevel += 1;
 
+    }
+
+    public void UnlockWallVacuum()
+    {
+        int soulsNeeded = 1;
+        if(Souls < soulsNeeded)
+        {
+            return;
+        }
+        Souls -= soulsNeeded;
+        unlockedVacuums.Add(Vacuum.Wall);
+    }
+
+    public void UnlockChargeVacuum()
+    {
+        int soulsNeeded = 1;
+        if(Souls < soulsNeeded)
+        {
+            return;
+        }
+        Souls -= soulsNeeded;
+        unlockedVacuums.Add(Vacuum.Charge);
     }
 
 

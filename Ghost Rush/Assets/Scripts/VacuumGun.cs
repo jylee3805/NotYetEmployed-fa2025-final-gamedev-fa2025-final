@@ -64,6 +64,7 @@ public class VacuumGun : MonoBehaviour
     }
     void Update()
     {
+
         if (currentVac == Vacuum.Charge)
         {
             rechargeDelay = .75f;

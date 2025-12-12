@@ -1,6 +1,14 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+public class VacuumCarousel
+{
+    public Sprite image { get; set; }
+    public Vacuum vacuum { get; set; }
+}
 
 public class PauseManager : MonoBehaviour
 {
@@ -16,6 +24,83 @@ public class PauseManager : MonoBehaviour
     public Button speedButton;
     public Button damageButton;
     public Button scaleButton;
+    public Button vaccumLeft;
+    public Button vaccumRight;
+    public Button equip;
+    public TextMeshProUGUI equipText;
+    public TextMeshProUGUI vacuumText;
+
+    public SpriteRenderer vacuumSprite;
+
+    public List<Sprite> vacuums;
+    public Image innerImage;
+    public int carouselIndex = 0;
+    public List<Vacuum> vacuumTypes;
+
+    private string getVacuumName(Vacuum type)
+    {
+        if (type == Vacuum.Default)
+        {
+            return "Default";
+        }
+        else if (type == Vacuum.Charge)
+        {
+            return "Charged";
+        }
+        else if (type == Vacuum.Wall)
+        {
+            return "Wall";
+        }
+        else return null;
+
+
+    }
+    private void moveRight()
+    {
+        carouselIndex++;
+        if(carouselIndex > 2)
+        {
+            carouselIndex = 0;
+        }
+        innerImage.sprite = vacuums[carouselIndex];
+        vacuumText.text = getVacuumName(vacuumTypes[carouselIndex]);
+    }
+
+    private void moveLeft()
+    {
+        carouselIndex--;
+        if (carouselIndex < 0)
+        {
+            carouselIndex = 2;
+        }
+        innerImage.sprite = vacuums[carouselIndex];
+        vacuumText.text = getVacuumName(vacuumTypes[carouselIndex]);
+    }
+
+    private void setVacuum()
+    {
+        if (!Leveling.Instance.unlockedVacuums.Contains(vacuumTypes[carouselIndex]))
+        {
+
+            switch (vacuumTypes[carouselIndex])
+            {
+                case Vacuum.Charge:
+                    Leveling.Instance.UnlockChargeVacuum();
+                    break;
+                case Vacuum.Wall:
+                    Leveling.Instance.UnlockWallVacuum();
+                    break;
+            }
+
+            if (!Leveling.Instance.unlockedVacuums.Contains(vacuumTypes[carouselIndex]))
+            {
+                return;
+            }
+                
+        }
+        VacuumGun.Instance.currentVac = vacuumTypes[carouselIndex];
+        vacuumSprite.sprite = vacuums[carouselIndex]; 
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,6 +108,11 @@ public class PauseManager : MonoBehaviour
         speedButton.onClick.AddListener (Leveling.Instance.UpgradeSpeed);
         damageButton.onClick.AddListener(Leveling.Instance.UpgradeDamage);
         scaleButton.onClick.AddListener(Leveling.Instance.UpgradeVaccumScale);
+        vaccumLeft.onClick.AddListener(moveLeft);
+        vaccumRight.onClick.AddListener(moveRight);
+        equip.onClick.AddListener(setVacuum);
+        innerImage.sprite = vacuums[carouselIndex];
+        vacuumText.text = getVacuumName(vacuumTypes[carouselIndex]);
     }
 
     // Update is called once per frame
@@ -34,7 +124,7 @@ public class PauseManager : MonoBehaviour
         speedText.text = "Speed Level: " + Leveling.Instance.SpeedLevel + "\nSoul Cost: " + (10 + Leveling.Instance.SpeedLevel * 2);
         damageText.text = "Damage Level: " + Leveling.Instance.DamageLevel + "\nSoul Cost: " + (10 + Leveling.Instance.DamageLevel * 2);
         scaleText.text = "Scale Level: " + Leveling.Instance.VaccumScaleLevel + "\nSoul Cost: " + (Leveling.Instance.VaccumScaleLevel * 2);
-
+        equipText.text = Leveling.Instance.unlockedVacuums.Contains(vacuumTypes[carouselIndex]) ? "Equip" : "Buy";
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
