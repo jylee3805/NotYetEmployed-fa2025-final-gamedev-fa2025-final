@@ -13,6 +13,11 @@ public class StartMenuController : MonoBehaviour
         SceneManager.LoadScene("Instructions");
     }
 
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void OnExitClick()
     {
 #if UNITY_EDITOR
