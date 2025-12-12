@@ -1,11 +1,21 @@
+
 using UnityEngine;
 using System.Collections;
 using NUnit.Framework;
 using System.Collections.Generic;
+
+public enum Vacuum
+{
+    Default,
+    Wall,
+    Charge
+}
 public class VacuumGun : MonoBehaviour
 {
     [Header("Assign the hitbox object here")]
     public GameObject hitbox;
+
+    public Vacuum currentVac = Vacuum.Default;
 
     public int level = 1;
 
@@ -54,6 +64,16 @@ public class VacuumGun : MonoBehaviour
     }
     void Update()
     {
+        if (currentVac == Vacuum.Charge)
+        {
+            rechargeDelay = .75f;
+            rechargeRate = 70f;
+        }
+        else
+        {
+            rechargeDelay = 1.5f;
+            rechargeRate = 40f;
+        }
         if (Input.GetMouseButton(0) && currentCharge > 0)
         {
             isHolding = true;

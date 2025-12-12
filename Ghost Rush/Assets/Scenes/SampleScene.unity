@@ -2252,6 +2252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VacuumGun
   hitbox: {fileID: 1890999722}
+  currentVac: 0
   level: 1
   currentCharge: 150
   maxCharge: 150
@@ -104072,6 +104073,7 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: c0fb7f4660fc94140be174473667188b, type: 3}
   suckedSprite: {fileID: 21300000, guid: eb7b05ab898144d3dbca35ba9c7a83f7, type: 3}
   pos: {fileID: 1528135507}
+  vacuumType: {fileID: 523351884}
 --- !u!60 &1890999727
 PolygonCollider2D:
   m_ObjectHideFlags: 0

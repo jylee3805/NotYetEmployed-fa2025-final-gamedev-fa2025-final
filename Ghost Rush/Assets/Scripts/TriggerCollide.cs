@@ -7,16 +7,13 @@ public class TriggerCollide : MonoBehaviour
 
     public Transform pos;
 
+    public VacuumGun vacuumType;
+
    void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Ghost"))
         {
-            Vector2 playerPos = transform.position;
-            Vector2 ghostPos = other.transform.position;
-
-            RaycastHit2D hit = Physics2D.Linecast(pos.position, ghostPos, LayerMask.GetMask("IgnoreGhosts"));
-
-            if (hit.collider == null) 
+            if (vacuumType.currentVac == Vacuum.Wall)
             {
                 GhostMovement ghostControl = other.GetComponent<GhostMovement>();
                 if (ghostControl != null)
@@ -27,8 +24,26 @@ public class TriggerCollide : MonoBehaviour
             }
             else
             {
+                Vector2 playerPos = transform.position;
+                Vector2 ghostPos = other.transform.position;
+
+                RaycastHit2D hit = Physics2D.Linecast(pos.position, ghostPos, LayerMask.GetMask("IgnoreGhosts"));
+
+                if (hit.collider == null) 
+                {
+                    GhostMovement ghostControl = other.GetComponent<GhostMovement>();
+                    if (ghostControl != null)
+                    {
+                        ghostControl.stopMovement(true);
+                        ghostControl.TakeDamage(VacuumGun.Instance.Damage);
+                    }
+                }
+                else
+                {
                 
+                } 
             }
+           
         }
     }   
 
