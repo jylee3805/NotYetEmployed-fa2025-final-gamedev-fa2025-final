@@ -107,7 +107,7 @@ public class Leveling : MonoBehaviour
 
     public void UnlockWallVacuum()
     {
-        int soulsNeeded = 1;
+        int soulsNeeded = 30;
         if(Souls < soulsNeeded)
         {
             return;
@@ -118,7 +118,7 @@ public class Leveling : MonoBehaviour
 
     public void UnlockChargeVacuum()
     {
-        int soulsNeeded = 1;
+        int soulsNeeded = 30;
         if(Souls < soulsNeeded)
         {
             return;
