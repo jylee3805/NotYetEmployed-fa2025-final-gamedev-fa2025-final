@@ -46,7 +46,7 @@ public class Leveling : MonoBehaviour
         {
             return;
         }
-        int soulsNeeded = 10 + HealthLevel * 2;
+        int soulsNeeded = 3 + HealthLevel * 2;
         if(Souls < soulsNeeded)
         {
             return;
@@ -62,7 +62,7 @@ public class Leveling : MonoBehaviour
         {
             return;
         }
-        int soulsNeeded = 10 + SpeedLevel * 2; 
+        int soulsNeeded = 3 + SpeedLevel * 2; 
         if(Souls < soulsNeeded)
         {
             return;
@@ -77,7 +77,7 @@ public class Leveling : MonoBehaviour
         if(DamageLevel >= 5){
             return;
         }
-        int soulsNeeded = 10 + DamageLevel * 2;
+        int soulsNeeded = 3 + DamageLevel * 2;
         if(Souls < soulsNeeded)
         {
             return;
@@ -94,7 +94,7 @@ public class Leveling : MonoBehaviour
         {
             return;
         }
-        int soulsNeeded = VaccumScaleLevel * 2;
+        int soulsNeeded = 3 + VaccumScaleLevel * 2;
         if (Souls < soulsNeeded)
         {
             return;

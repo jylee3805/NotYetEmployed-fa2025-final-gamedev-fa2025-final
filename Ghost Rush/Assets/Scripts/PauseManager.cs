@@ -132,13 +132,13 @@ public class PauseManager : MonoBehaviour
     {
 
         soulsText.text = "Souls: " + Leveling.Instance.Souls;
-        healthText.text = "Health Level: " + Leveling.Instance.HealthLevel + "\nSoul Cost: " + (10 + Leveling.Instance.HealthLevel * 2);
-        speedText.text = "Speed Level: " + Leveling.Instance.SpeedLevel + "\nSoul Cost: " + (10 + Leveling.Instance.SpeedLevel * 2);
-        damageText.text = "Damage Level: " + Leveling.Instance.DamageLevel + "\nSoul Cost: " + (10 + Leveling.Instance.DamageLevel * 2);
-        scaleText.text = "Scale Level: " + Leveling.Instance.VaccumScaleLevel + "\nSoul Cost: " + (Leveling.Instance.VaccumScaleLevel * 2);
+        healthText.text = "Health Level: " + Leveling.Instance.HealthLevel + "\nSoul Cost: " + (3 + Leveling.Instance.HealthLevel * 2);
+        speedText.text = "Speed Level: " + Leveling.Instance.SpeedLevel + "\nSoul Cost: " + (3 + Leveling.Instance.SpeedLevel * 2);
+        damageText.text = "Damage Level: " + Leveling.Instance.DamageLevel + "\nSoul Cost: " + (3 + Leveling.Instance.DamageLevel * 2);
+        scaleText.text = "Scale Level: " + Leveling.Instance.VaccumScaleLevel + "\nSoul Cost: " + (3 + Leveling.Instance.VaccumScaleLevel * 2);
         equipText.text = Leveling.Instance.unlockedVacuums.Contains(vacuumTypes[carouselIndex]) ? "Equip" : "Buy";
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (isPaused)
             {
