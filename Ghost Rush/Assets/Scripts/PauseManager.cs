@@ -29,7 +29,11 @@ public class PauseManager : MonoBehaviour
     public Button equip;
     public TextMeshProUGUI equipText;
     public TextMeshProUGUI vacuumText;
+    public AudioSource generalAudio;
+    public AudioSource sfxAudio;
 
+    public Slider musicSlider;
+    public Slider sfxSlider;
     public SpriteRenderer vacuumSprite;
 
     public List<Sprite> vacuums;
@@ -113,6 +117,14 @@ public class PauseManager : MonoBehaviour
         equip.onClick.AddListener(setVacuum);
         innerImage.sprite = vacuums[carouselIndex];
         vacuumText.text = getVacuumName(vacuumTypes[carouselIndex]);
+        musicSlider.value = .25f;
+        sfxSlider.value = .25f;
+        SetVolumeSFX(.25f);
+        SetVolume(.25f);
+
+        musicSlider.onValueChanged.AddListener(SetVolume);
+        sfxSlider.onValueChanged.AddListener(SetVolumeSFX);
+        
     }
 
     // Update is called once per frame
@@ -157,4 +169,15 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    public void SetVolume(float value)
+    {
+        generalAudio.volume = value;  
+    }
+
+      public void SetVolumeSFX(float value)
+    {
+        sfxAudio.volume = value;  
+    }
+
 }

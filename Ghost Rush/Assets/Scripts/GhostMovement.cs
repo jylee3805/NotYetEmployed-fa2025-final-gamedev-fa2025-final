@@ -14,7 +14,7 @@ public class GhostMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Transform barFill;
     public float maxHealth = 50f;
-
+  
 
     private Animator anim;
 

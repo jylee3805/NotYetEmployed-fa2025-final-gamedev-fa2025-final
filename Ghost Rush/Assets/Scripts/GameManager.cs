@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int baseGhosts = 5;
     public GameObject ghostAsset;
     public GameObject ghostAsset2;
+    public AudioSource sfxSource;
+    public AudioClip ghostDeathSFX;
 
 
     
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void ghostDeath()
     {
+        sfxSource.PlayOneShot(ghostDeathSFX);
         numGhosts-=1;
         if (numGhosts == 0)
         {
