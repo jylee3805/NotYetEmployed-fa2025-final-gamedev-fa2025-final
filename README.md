@@ -2,12 +2,10 @@
 
 
 ## Authors
-
-
+Haroon Almadani, Jin Lee, Kathy "Erixx" Phu, Alex Carpio
 
 ## Game Description
-
-
+In this game you hunt and vacuum ghosts while dodging waves of enemies. For each ghost you capture you earn souls that let you level up, upgrade your stats and equip new weapons. The longer you survive the harder it gets.
 
 ## Important Links
 
