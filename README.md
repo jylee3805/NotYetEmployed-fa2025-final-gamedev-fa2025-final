@@ -9,10 +9,10 @@ In this game you hunt and vacuum ghosts while dodging waves of enemies. For each
 
 ## Important Links
 
-- Game URL: < https://play.unity.com/en/games/0ca9b748-40fe-4e6f-8619-dea7f82830fd/build >
+- Game URL: < https://play.unity.com/en/games/dcaae44b-ff5b-4c24-ab96-c1289b9cb6c7/ghost-rush >
 - GITHUB URL: < https://github.com/jylee3805/NotYetEmployed-fa2025-final-gamedev-fa2025-fina >
 - Gameplay Video URL: < https://youtu.be/KMdW3ZXYl9I?si=5V9I79lzSpiX8KZ0 >
-- Google Doc writeup: < ... >
+- Itch.IO: < https://phukn.itch.io/ghost-rush >
 
 ## Files in the repository
 
